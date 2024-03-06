@@ -1,0 +1,21 @@
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployapi01
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: api01
+  template:
+    metadata:
+      labels:
+        app: api01
+    spec:
+      containers:
+      - name: containerapi01
+        image: wmadiano/demojwt:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
